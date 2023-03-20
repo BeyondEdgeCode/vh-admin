@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
+.navItem{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 18px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.itemInfo{
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.icon{
+    font-size: 32px;
+}
+
+.navItem:last-child{
+    position: absolute;
+    bottom: 0;
+}

@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+
+.logo{
+    width: 100%;
+}
+
+.logo_h1{
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Amatic SC', cursive;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
