@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+@import url('https://db.onlinewebfonts.com/c/af883e70620ae1b984628ff0eba1af8d?family=Yandex+Sans+Text');
 
 .navItem{
     width: 100%;
@@ -12,14 +13,19 @@
 }
 
 .itemInfo{
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Yandex Sans Display Light', monospace;
 }
 
 .icon{
     font-size: 32px;
+    color: #a2a2a2;
 }
 
 .navItem:last-child{
     position: absolute;
     bottom: 0;
+}
+
+.selected{
+    border-bottom: var(--violet) 2px solid;
 }

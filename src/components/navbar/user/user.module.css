@@ -1,14 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+@import url('https://db.onlinewebfonts.com/c/af883e70620ae1b984628ff0eba1af8d?family=Yandex+Sans+Text');
 
 .user{
     margin-top: 32px;
     display: flex;
+    justify-content: center;
     width: 100%;
     margin-bottom: 64px;
 }
 
 .userName{
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 16px;
+    font-family: 'Yandex Sans Display Light', 'JetBrains Mono Light', monospace;
+    font-size: 24px;
     text-align: center;
+
+}
+
+.userCircle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #e5e8e7;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+
+}
+
+.selected{
+    border: var(--violet) 1px solid;
+}
+
+.linkWrapper{
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
 }

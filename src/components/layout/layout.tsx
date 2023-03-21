@@ -1,38 +1,32 @@
-import {Link, Navigate, Outlet, useLocation} from "react-router-dom"
+import {Navigate, Outlet, useLocation} from "react-router-dom"
 import {Navbar} from "../navbar/navbar";
 import {useEffect, useState} from "react";
 import {getLocalStorage} from "../../utils/localStorage";
 import {getUser} from "../../api/user";
 import {setUserPermissions} from "../store/user.store";
-import {UserPermissionsData$} from "../store/user.store";
-import {redirect} from "react-router-dom";
 import {IsAuthData$, setIsAuth} from "../store/user.store";
 import {useObservable} from "../../utils/useObservable";
-
-const getUserInfo = (token: string) => {
-    const info = getUser(token).then(r => !!r.permissions)
-    return info
-}
+import {UserAuthData$} from "../store/user.store";
 
 const isAdmin = (response: any) => {
     return response.permissions.includes('admin.all')
 }
 
-const setInfo = (permissions: Array<string> | undefined) => {
+const loginUser = (permissions: Array<string> | undefined) => {
     setUserPermissions(permissions);
     setIsAuth(true);
 }
 
 export const Layout = () => {
     const location = useLocation()
-    const userAuthToken = getLocalStorage('jwt')
     const isAuthData = useObservable(IsAuthData$)
-    const userPermissions = useObservable(UserPermissionsData$)
+    const userAuthData = useObservable(UserAuthData$)
+    const userAuthToken = getLocalStorage('jwt')
 
     useEffect(() => {
-        !!userAuthToken && getUser(userAuthToken).then(r =>  isAdmin(r) ? setInfo(r.permissions)
+        !!userAuthToken && getUser(userAuthToken).then(r =>  isAdmin(r) ? loginUser(r.permissions)
             : setIsAuth(false))
-        }, [userAuthToken])
+        }, [userAuthData])
 
 
     return (
