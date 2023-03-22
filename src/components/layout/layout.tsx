@@ -7,7 +7,7 @@ import {setUserPermissions} from "../store/user.store";
 import {IsAuthData$, setIsAuth} from "../store/user.store";
 import {useObservable} from "../../utils/useObservable";
 import {UserAuthData$} from "../store/user.store";
-
+import css from './layout.module.css'
 const isAdmin = (response: any) => {
     return response.permissions.includes('admin.all')
 }
@@ -31,10 +31,10 @@ export const Layout = () => {
 
     return (
         isAuthData || location.pathname == "/login" ?
-        <>
+        <div className={css.layout}>
         <Navbar/>
         <Outlet/>
-        </>
+        </div>
         : <Navigate to='/login' replace={true}/>
     )
 }

@@ -1,0 +1,21 @@
+.button{
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 2px;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    background: linear-gradient(180deg, rgba(253,226,22,1) 0%, rgba(249,221,5,1) 50%, rgba(243,215,5,1) 100%);
+    border: 1px solid #b6b6b6;
+}
+
+.button:first-child{
+    margin-left: 0px;
+}
+.button{
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.button:active{
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}

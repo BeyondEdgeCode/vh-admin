@@ -13,11 +13,11 @@ type NavItem = {
 
 export const NavItem = ({fa, text, to, selected}: NavItem) => {
     return (
-        <Link to={to} className={css.navItem}>
+        <Link to={to} className={classNames([css.navItem, selected ? css.selected : undefined])}>
             <FontAwesomeIcon className={css.icon}
                              icon={fa}
             />
-            <span className={classNames([css.itemInfo, selected ? css.selected : undefined])}>{text}</span>
+            <span className={classNames([css.itemInfo])}>{text}</span>
         </Link>
     )
 }

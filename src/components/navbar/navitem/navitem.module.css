@@ -2,17 +2,19 @@
 @import url('https://db.onlinewebfonts.com/c/af883e70620ae1b984628ff0eba1af8d?family=Yandex+Sans+Text');
 
 .navItem{
-    width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    margin-bottom: 18px;
+    padding-left: 18px;
+    padding-right: 18px;
     text-decoration: none;
     color: black;
     cursor: pointer;
 }
 
 .itemInfo{
+    margin-left: 8px;
     font-family: 'Yandex Sans Display Light', monospace;
 }
 
@@ -21,11 +23,11 @@
     color: #a2a2a2;
 }
 
-.navItem:last-child{
-    position: absolute;
-    bottom: 0;
-}
+/*.navItem:last-child{*/
+/*    margin-left: auto;*/
+/*}*/
 
 .selected{
-    border-bottom: var(--violet) 2px solid;
+    /*border-bottom: var(--violet) 2px solid;*/
+    background-color: #ffffdd;
 }

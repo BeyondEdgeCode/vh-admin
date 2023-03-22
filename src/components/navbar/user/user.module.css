@@ -2,11 +2,11 @@
 @import url('https://db.onlinewebfonts.com/c/af883e70620ae1b984628ff0eba1af8d?family=Yandex+Sans+Text');
 
 .user{
-    margin-top: 32px;
+    /*margin-top: 32px;*/
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-bottom: 64px;
+    /*margin-bottom: 64px;*/
 }
 
 .userName{
@@ -35,4 +35,6 @@
     text-decoration: none;
     cursor: pointer;
     color: black;
+    margin-left: auto;
+    margin-right: 18px;
 }
