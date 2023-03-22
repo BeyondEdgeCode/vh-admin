@@ -1,9 +1,9 @@
 import css from './button.module.css';
 
 type TButton = {
-    payload: Function
+    onClick: Function
     title: string
 }
-export const PrimaryButton = ({payload, title}: TButton) => {
-    return <button onClick={() => {payload()}} className={css.button}>{title}</button>
+export const PrimaryButton = ({onClick, title}: TButton) => {
+    return <button onClick={() => {onClick()}} className={css.button}>{title}</button>
 }

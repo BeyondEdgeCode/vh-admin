@@ -2,7 +2,7 @@ import axios, {Method} from "axios";
 import {userAuthLogin, userAuthMe} from "./api";
 import {OPTIONS} from "./api";
 import {baseURL} from "./api";
-import {setNewUserAuthKey} from "../components/store/user.store";
+import {setIsAuth, setNewUserAuthKey, setUserPermissions} from "../components/store/user.store";
 import {setLocalStorage} from "../utils/localStorage";
 
 export type GetUser = {
@@ -50,8 +50,9 @@ export const userLogin = async (login: string, password: string) => {
         case 401:
             return 'Wrong password'
         default:
+            setLocalStorage('jwt', response.access_token as string)
+            setIsAuth(true)
             setNewUserAuthKey(response.access_token)
-            setLocalStorage('jwt', <string>response.access_token)
             return 'Ok'
     }
 

@@ -3,7 +3,7 @@ import {createSetterStore} from "../../utils/createSetterStore";
 
 const userAuthKey$ = new BehaviorSubject<string | null | undefined>(null)
 const userPermissions$ = new BehaviorSubject<Array<string> | null | undefined>(null)
-const isAuth$ = new BehaviorSubject<Boolean>(false)
+const isAuth$ = new BehaviorSubject<boolean>(true)
 
 export const setNewUserAuthKey = createSetterStore(userAuthKey$)
 export const setUserPermissions = createSetterStore(userPermissions$)
