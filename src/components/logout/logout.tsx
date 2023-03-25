@@ -1,18 +1,17 @@
-import {setUserPermissions} from "../store/user.store";
-import {setIsAuth} from "../store/user.store";
-import {setNewUserAuthKey} from "../store/user.store";
-import {Navigate, useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {setLocalStorage} from "../../utils/localStorage";
+import { useEffect, useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { setLocalStorage } from '../../utils/localStorage';
+import {
+    setIsAuth,
+    setNewUserAuthKey,
+    setUserPermissions,
+} from '../store/user.store';
 export const Logout = () => {
-    console.log('cleared')
-    // setLocalStorage('jwt', '')
-    localStorage.clear()
-    // setNewUserAuthKey(undefined)
-    // setUserPermissions(null)
-    // setIsAuth(false)
+    setLocalStorage('jwt', '');
+    // localStorage.clear();
+    setNewUserAuthKey(undefined);
+    setUserPermissions([]);
+    setIsAuth(false);
 
-    return (
-        <Navigate to={'/login'}/>
-    )
-}
+    return <Navigate to={'/login'} />;
+};
