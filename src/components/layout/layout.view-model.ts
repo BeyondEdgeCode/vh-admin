@@ -5,7 +5,6 @@ import {
     IsAuthData$,
     setIsAuth,
     setUserPermissions,
-    UserPermissionsData$,
 } from '../store/user.store';
 
 export const newLayoutVM = () => {
@@ -32,12 +31,10 @@ export const newLayoutVM = () => {
     const isAuth$ = IsAuthData$.pipe(
         tap((x) => {
             const userAuthToken = localStorage.getItem('jwt');
-            if (location.pathname === '/login') {
-                if (!!userAuthToken) {
-                    getUser(userAuthToken).then((r) =>
-                        isAdmin(r) ? loginUser(r.permissions) : disableAuth()
-                    );
-                }
+            if (!!userAuthToken && location.pathname === '/login') {
+                getUser(userAuthToken).then((r) =>
+                    isAdmin(r) ? loginUser(r.permissions) : disableAuth()
+                );
             }
             if (!!x && !userAuthToken) {
                 disableAuth();
@@ -45,19 +42,10 @@ export const newLayoutVM = () => {
         })
     );
 
-    // const userAuthData$ = UserPermissionsData$
-    // .pipe
-    // tap((_) => disableAuth()),
-    // tap((x) => console.log(x, 'UserPermissionsData'))
-    // ();
-
-    // console.log(userAuthToken, 'ALARM');
-
     return {
         values: {},
         observers: {
             isAuth$,
-            // userAuthData$,
         },
     };
 };
