@@ -1,5 +1,5 @@
-import {useEffect, useState} from "react";
-import {Observable} from "rxjs";
+import { useEffect, useState } from 'react';
+import { Observable } from 'rxjs';
 
 export const useObservable = <T>(
     fa: Observable<T>,
