@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { categoryGet, OPTIONS, userAuthMe } from './api';
+import {getLocalStorage} from "../utils/localStorage";
 
 export type TSubCategory = {
     id: number;
@@ -11,7 +12,8 @@ export type TCategory = {
     title: string;
     subcategories: Array<TSubCategory>;
 };
-export const categoryGetApi = async (token: string | undefined | null) => {
+export const categoryGetApi = async () => {
+    const token = localStorage.getItem('jwt');
     const res = await axios.get<Array<TCategory>>(
         categoryGet,
         OPTIONS('GET', String(token))

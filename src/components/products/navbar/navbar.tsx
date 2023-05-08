@@ -1,14 +1,10 @@
-import { Location, useLocation, useNavigation } from 'react-router-dom';
+import { Location, useLocation } from 'react-router-dom';
 import { NavElement } from './element/navElement';
 import css from './navbar.module.css';
 
 export const toBool = (navigation: Location, route: string) => {
     // TODO: move to utils
-    if (navigation.pathname.includes(route)) {
-        return true;
-    } else {
-        return false;
-    }
+    return navigation.pathname.includes(route);
 };
 
 export const Navbar = () => {

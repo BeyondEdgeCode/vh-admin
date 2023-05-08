@@ -1,5 +1,6 @@
 import Popup from "reactjs-popup";
 import css from './popup.module.css';
+import React from "react";
 
 type TPopup = {
     title: string
@@ -7,7 +8,8 @@ type TPopup = {
     setOpen: React.Dispatch<boolean>
     content?: any
 }
-export const UniversalPopup = ({isOpen, setOpen, content, title}: TPopup) => (
+export const UniversalPopup = ({isOpen, setOpen, content, title}: TPopup) => {
+    return (
     <Popup open={isOpen} onClose={()=>{setOpen(false)}} modal position="top center">
         <div className={css.root}>
             <div className={css.modalHeader}>
@@ -16,5 +18,5 @@ export const UniversalPopup = ({isOpen, setOpen, content, title}: TPopup) => (
             </div>
             {content}
         </div>
-    </Popup>
-);
+    </Popup>)
+};

@@ -18,7 +18,7 @@ export const Category = () => {
     const [popupOpen, setPopupOpen] = useState(false)
 
     useEffect(() => {
-        categoryGetApi(token).then(d => {
+        categoryGetApi().then(d => {
             setTableData(d)
             setIsDataLoaded(true)
         })
@@ -35,11 +35,9 @@ export const Category = () => {
                 </div>
             }/>
             <PrimaryButton onClick={() => setPopupOpen(true)} title={'Открыть попап'}/>
+            <PrimaryButton disabled={true} onClick={() => setPopupOpen(true)} title={'Disabled Primary Button'}/>
             <SecondaryButton payload={() => alert(1234)} title={'Вторичная кнопка'}/>
-            <SecondaryButton payload={() => alert(1234)} title={'Вторичная кнопка'}/>
-            <SecondaryButton payload={() => alert(1234)} title={'Вторичная кнопка'}/>
-            <SecondaryButton payload={() => alert(1234)} title={'Вторичная кнопка'}/>
-            <SecondaryButton payload={() => alert(1234)} title={'Вторичная кнопка'}/>
+            <SecondaryButton disabled={true} payload={() => alert(1234)} title={'Disabled Secondary Button'}/>
         </div>
         <Table header={['№', 'Название', 'Подкатегории']} data={tableData} isLoaded={isDataLoaded}/>
     </div>

@@ -1,0 +1,40 @@
+p{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 14px 8px;
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+.spaceBetween{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.orderId{
+    font-size: 18px;
+    color: var(--violet);
+}
+
+.orderTotal{
+    font-style: italic;
+}
+
+.status{
+    font-size: 12px;
+}
+
+.createdAt{
+    font-size: 12px;
+}
+
+.container:nth-child(even){
+    background-color: #f2f7ff;
+}

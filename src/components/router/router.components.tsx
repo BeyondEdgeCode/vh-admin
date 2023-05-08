@@ -5,6 +5,9 @@ import { LayoutContainer } from '../layout/layout.container';
 import { Login } from '../login/login';
 import { Logout } from '../logout/logout';
 import { Products } from '../products/products';
+import {Orders} from "../orders/Orders";
+import {OrderOutlet} from "../orders/order-outlet/OrderOutlet";
+import {OrderEmpty} from "../orders/order-outlet/OrderEmpty";
 export const RouterComponents = () => {
     return (
         <>
@@ -12,7 +15,10 @@ export const RouterComponents = () => {
                 <Route path="/" element={<LayoutContainer />}>
                     <Route path="login" element={<Login />} />
                     <Route path="logout" element={<Logout />} />
-                    <Route path="orders" element={<b>Хуй</b>} />
+                    <Route path="orders" element={<Orders />}>
+                        <Route path=":orderId" element={<OrderOutlet/>}/>
+                        <Route path="" element={<OrderEmpty/>}/>
+                    </Route>
                     <Route path="products" element={<Products />}>
                         <Route path="storage" element={<b>Хуй</b>} />
                         <Route path="list" element={<b>Хуй</b>} />
