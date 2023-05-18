@@ -13,10 +13,69 @@
 
 .container{
     display: flex;
+    flex-direction: column;
     padding: 8px 16px;
+    width: 100%;
 }
 
-.orderHeader{
+.row{
     display: flex;
     flex-direction: row;
+    height: 28px;
+    align-items: center;
+
+}
+
+.extra_margin{
+    margin-bottom: 16px;
+}
+
+h2{
+    padding: 0;
+    margin: 0;
+}
+
+.row_element{
+    padding-right: 16px;
+}
+
+
+
+.orderItemsList{
+    margin: 0;
+    width: 980px;
+    border: 1px solid #e0e0e1;
+    border-radius: 5px;
+    background-color: #fdfdfd;
+}
+
+.userInfo{
+    width: calc(980px - 36px);
+    background-color: #fdfdfd;
+    padding: 18px;
+    border: 1px solid #e0e0e1;
+    border-radius: 5px;
+    margin-bottom: 18px;
+}
+
+.defaultText{
+    color: #686766;
+}
+
+.info_row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 14px;
+    /*margin-top: 4px;*/
+}
+
+/*.info_row:first-child{*/
+/*    margin-top: 0px;*/
+/*}*/
+
+.userInfoWrapper{
+    display: flex;
+    flex-direction: column;
+    width: 280px;
 }

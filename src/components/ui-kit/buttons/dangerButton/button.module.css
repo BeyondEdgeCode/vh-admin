@@ -1,0 +1,28 @@
+.button{
+    background: linear-gradient(180deg, rgba(255,60,60,1) 0%, rgba(254,71,71,1) 50%, rgba(255,88,88,1) 100%);
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 2px;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    border: 1px solid #b6b6b6;
+    color: #fff;
+}
+
+.button:first-child{
+    margin-left: 0px;
+}
+.button{
+    margin-left: 6px;
+    margin-right: 6px;
+}
+.button:active{
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+.button:disabled{
+    cursor: not-allowed;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(252,252,252,1) 50%, rgba(249,249,249,1) 100%);
+    border: 1px solid #dedede;
+    color: #dedede;
+}

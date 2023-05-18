@@ -1,0 +1,66 @@
+p{
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+
+.container{
+    margin: 18px;
+    display: flex;
+    justify-content: space-between;
+    padding: 18px;
+    border: 1px solid #e0e0e1;
+    border-radius: 4px;
+}
+
+.image{
+    height: 68px;
+    padding-right: 16px;
+}
+
+.info{
+    display: flex;
+    flex-direction: row;
+}
+
+.infoRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title{
+    font-size: 14px;
+}
+
+.defaultText{
+    color: #686766;
+}
+
+.category{
+    font-size: 12px;
+}
+
+
+.pricePerItem{
+    font-size: 14px;
+}
+
+.rowContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.financial{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 256px;
+    font-size: 14px;
+}

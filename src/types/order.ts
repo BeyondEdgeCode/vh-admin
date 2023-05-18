@@ -1,3 +1,28 @@
+import {IUser} from "./user";
+
+export enum EOrderStatus {
+    WaitPayment = 'awaiting_payment',
+    Forming = 'forming',
+    InDelivery = 'in_delivery',
+    Finished = 'finished',
+    CanceledBySystem = 'canceled_by_system',
+    CanceledByUser = 'canceled_by_user'
+}
+
+interface IDateFormatter {
+    (data: string): Date
+}
+const dateFormatter: IDateFormatter = (data: string) => {
+    return new Date(Date.parse(data))
+}
+export interface IOrderShort {
+    id: number;
+    status: EOrderStatus,
+    sum: number,
+    shop: IShopInformation,
+    created_at: string
+}
+
 export interface IShopInformation {
     id: number,
     title: string,
@@ -7,9 +32,21 @@ export interface IShopInformation {
     preview: string,
     street: string
 }
+
+interface ISubcategoryInfo{
+    id: number;
+    title: string;
+}
+
+interface ICategoryInfo {
+    id: number,
+    title: string,
+    subcategories : Array<ISubcategoryInfo>
+}
 export interface IOrderProduct {
     id: number,
     title: string,
+    categories: ICategoryInfo,
     description: string,
     price: number,
     quantity: number,
@@ -24,10 +61,12 @@ export interface IOrderItemInformation{
 }
 export interface IOrderInformation {
     id: number,
-    status: string,
+    user: IUser
+    status: EOrderStatus,
     delivery_type: string,
     payment_type: string,
     sum: number,
     shop: IShopInformation,
-    items: Array<IOrderItemInformation>
+    items: Array<IOrderItemInformation>,
+    created_at: string
 }

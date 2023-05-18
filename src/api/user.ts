@@ -1,9 +1,8 @@
 import axios, {Method} from "axios";
-import {userAuthLogin, userAuthMe} from "./api";
-import {OPTIONS} from "./api";
-import {baseURL} from "./api";
-import {setIsAuth, setNewUserAuthKey, setUserPermissions} from "../components/store/user.store";
+import {baseURL, OPTIONS, userAuthLogin, userAuthMe, userGet} from "./api";
+import {setIsAuth, setNewUserAuthKey} from "../components/store/user.store";
 import {setLocalStorage} from "../utils/localStorage";
+import {IUser} from "../types/user";
 
 export type GetUser = {
     error?: string
@@ -56,4 +55,11 @@ export const userLogin = async (login: string, password: string) => {
             return 'Ok'
     }
 
+}
+
+export const getUserById = async (id: number) => {
+    const token = localStorage.getItem('jwt');
+    const opts = OPTIONS('GET', String(token))
+    const request = await axios.get<IUser>(userGet, {...opts, params:{id:id}})
+    return request.data;
 }
