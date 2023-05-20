@@ -12,6 +12,8 @@ export const getOrderStatus = (status: string) => {
             return 'Отменен системой'
         case 'canceled_by_user':
             return 'Отменен'
+        case 'waiting_to_receive':
+            return 'Ожидает получения'
         default:
             return 'Неизвестный статус'
     }

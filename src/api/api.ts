@@ -8,6 +8,8 @@ export const userAuthMe = `${baseURL}/user/auth/me`;
 export const categoryGet = `${baseURL}/product/category`;
 export const ordersGet = `${baseURL}/order/aget`;
 export const ordersGetOne = `${baseURL}/order/aget_one`;
+export const ordersChangeState = `${baseURL}/order/state`;
+export const ordersCancel = `${baseURL}/order/acancel`;
 export const userGet = `${baseURL}/user/admin/get`;
 
 

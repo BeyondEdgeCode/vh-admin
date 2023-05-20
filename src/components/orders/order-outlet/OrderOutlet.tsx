@@ -1,16 +1,14 @@
-import {Navigate, useNavigate, useParams} from 'react-router-dom';
-import {EOrderStatus, IOrderInformation} from '../../../types/order';
+import {Navigate, useParams} from 'react-router-dom';
+import {EOrderDelivery, EOrderStatus, IOrderInformation} from '../../../types/order';
 import css from './orderoutlet.module.css';
 import {getOrderStatus} from "../../../utils/getOrderStatus";
 import {PrimaryButton} from "../../ui-kit/buttons/primaryButton/primaryButton";
-import {SecondaryButton} from "../../ui-kit/buttons/secondaryButton/secondaryButton";
 import {DangerButton} from "../../ui-kit/buttons/dangerButton/dangerButton";
 import {useEffect, useState} from "react";
-import {getOrder} from "../../../api/order";
+import {cancelOrder, changeState, getOrder} from "../../../api/order";
 import {translateDateToString} from "../../../utils/translateDateToString";
 import {OrderItem} from "./order-item/OrderItem";
 import classNames from "classnames";
-import {getUserById} from "../../../api/user";
 
 export const OrderOutlet = () => {
     const { orderId } = useParams();
@@ -28,6 +26,9 @@ export const OrderOutlet = () => {
         return <Navigate to='/404'/>
     }
 
+    const changeStatus = (stage: string, orderId: number) => {changeState(stage, orderId).then((r) => alert(r.msg))}
+    const cancel = (id: number) => {cancelOrder(id).then((r) => alert(r.msg))}
+
     return (
         <div className={css.container}>
             <div className={css.row}>
@@ -42,11 +43,30 @@ export const OrderOutlet = () => {
 
 
             <div className={classNames(css.row, css.extra_margin)}>
-                <PrimaryButton onClick={()=>alert(1)} title={'Primary'}/>
-
-                <SecondaryButton payload={()=>alert(1)} title={'Secondary'}/>
-
-                <DangerButton payload={()=>alert(1)} title={'Danger'}/>
+                {
+                    orderInformation.status === EOrderStatus.Forming &&
+                    orderInformation.delivery_type === EOrderDelivery.Pickup?
+                        <PrimaryButton onClick={()=>changeStatus(EOrderStatus.WaitingToRecieve, orderInformation.id)} title={'Готов к вручению'}/> : null
+                }
+                {
+                    orderInformation.status === EOrderStatus.Forming &&
+                    orderInformation.delivery_type === EOrderDelivery.Delivery?
+                        <PrimaryButton onClick={()=>changeStatus(EOrderStatus.InDelivery, orderInformation.id)} title={'Заказ отправлен'}/> : null
+                }
+                {
+                    orderInformation.status === EOrderStatus.InDelivery ?
+                        <PrimaryButton onClick={()=>changeStatus(EOrderStatus.Finished, orderInformation.id)} title={'Завершить'}/> : null
+                }
+                {
+                    orderInformation.status === EOrderStatus.WaitingToRecieve ?
+                        <PrimaryButton onClick={()=>changeStatus(EOrderStatus.Finished, orderInformation.id)} title={'Завершить'}/> : null
+                }
+                {
+                    orderInformation.status !== EOrderStatus.Finished &&
+                    orderInformation.status !== EOrderStatus.CanceledBySystem &&
+                    orderInformation.status !== EOrderStatus.CanceledByUser ?
+                        <DangerButton payload={()=> cancel(orderInformation.id)} title={'Отменить заказ'}/> : null
+                }
             </div>
 
             <div className={css.userInfo}>
@@ -67,10 +87,29 @@ export const OrderOutlet = () => {
                         <p className={css.defaultText}>Дата регистрации: </p>
                         <p className={css.infoData}>{`${translateDateToString(orderInformation.user.registrationDate)}`}</p>
                     </div>
-
-
                 </div>
             </div>
+            {
+                orderInformation.promocode_ref !== null ?
+                    <div className={css.userInfo}>
+                        <div className={css.userInfoWrapper}>
+                            <div className={css.info_row}>
+                                <p className={css.defaultText}>Промокод: </p>
+                                <p className={css.infoData}>{`${orderInformation.promocode_ref.key}`}</p>
+                            </div>
+                            <div className={css.info_row}>
+                                <p className={css.defaultText}>Тип промокода: </p>
+                                <p className={css.infoData}>{`${orderInformation.promocode_ref.promotype.type}`}</p>
+                            </div>
+                            <div className={css.info_row}>
+                                <p className={css.defaultText}>Номинал: </p>
+                                <p className={css.infoData}>{`${orderInformation.promocode_ref.value}`}</p>
+                            </div>
+                        </div>
+                    </div> :
+                    null
+            }
+
 
             <div className={css.orderItemsList}>
                 {orderInformation.items.map(i => <OrderItem item={i}/>)}

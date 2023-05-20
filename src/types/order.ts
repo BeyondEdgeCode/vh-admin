@@ -1,12 +1,19 @@
 import {IUser} from "./user";
 
+
+export enum EOrderDelivery{
+    Pickup = 'pickup',
+    Delivery = 'delivery'
+}
+
 export enum EOrderStatus {
     WaitPayment = 'awaiting_payment',
     Forming = 'forming',
     InDelivery = 'in_delivery',
     Finished = 'finished',
     CanceledBySystem = 'canceled_by_system',
-    CanceledByUser = 'canceled_by_user'
+    CanceledByUser = 'canceled_by_user',
+    WaitingToRecieve = 'waiting_to_receive'
 }
 
 interface IDateFormatter {
@@ -59,14 +66,23 @@ export interface IOrderItemInformation{
     amount: number
     item_sum: number
 }
+interface IPromocodeType{
+    type: string,
+}
+interface IPromocodeInfo{
+    key: string,
+    promotype: IPromocodeType,
+    value: number
+}
 export interface IOrderInformation {
     id: number,
     user: IUser
     status: EOrderStatus,
-    delivery_type: string,
+    delivery_type: EOrderDelivery,
     payment_type: string,
     sum: number,
     shop: IShopInformation,
     items: Array<IOrderItemInformation>,
-    created_at: string
+    created_at: string,
+    promocode_ref: IPromocodeInfo
 }
