@@ -1,0 +1,11 @@
+.rowImage{
+    width: 100px
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(auto-fill, 1fr);
+    grid-column-gap: 2px;
+    grid-row-gap: 2px;
+}

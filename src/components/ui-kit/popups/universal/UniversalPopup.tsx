@@ -7,10 +7,17 @@ type TPopup = {
     isOpen: boolean
     setOpen: React.Dispatch<boolean>
     content?: any
+    closeOnClick?: boolean
 }
-export const UniversalPopup = ({isOpen, setOpen, content, title}: TPopup) => {
+export const UniversalPopup = ({isOpen, setOpen, content, title, closeOnClick}: TPopup) => {
     return (
-    <Popup open={isOpen} onClose={()=>{setOpen(false)}} modal position="top center">
+    <Popup
+        open={isOpen}
+        onClose={()=>{setOpen(false)}}
+        modal
+        position="top center"
+        closeOnDocumentClick={closeOnClick === true}
+    >
         <div className={css.root}>
             <div className={css.modalHeader}>
                 <h3 className={css.h3}>{title}</h3>

@@ -99,7 +99,10 @@ export const OrderOutlet = () => {
                             </div>
                             <div className={css.info_row}>
                                 <p className={css.defaultText}>Тип промокода: </p>
-                                <p className={css.infoData}>{`${orderInformation.promocode_ref.promotype.type}`}</p>
+                                <p className={css.infoData}>{
+                                    orderInformation.promocode_ref.promotype.type === 'fixed' ? 'Фиксированный'
+                                    : orderInformation.promocode_ref.promotype.type === 'percent' ? 'Процентный' : 'Ошибка'
+                                }</p>
                             </div>
                             <div className={css.info_row}>
                                 <p className={css.defaultText}>Номинал: </p>

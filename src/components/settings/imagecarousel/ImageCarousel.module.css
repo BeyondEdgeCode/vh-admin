@@ -1,0 +1,58 @@
+.carousel_image{
+    width: 200px
+}
+
+.container{
+    padding: 8px
+}
+
+.table{
+}
+
+.tableTr{
+    margin: 6px 8px;
+}
+
+.tableTd{
+    padding-right: 8px;
+    padding-bottom: 6px;
+}
+
+.controlButtons{
+    margin: 8px 0;
+}
+
+.popupImage{
+    height: 120px;
+}
+
+.popupFlexRow{
+    display: flex;
+    padding-bottom: 12px;
+    align-items: center;
+}
+
+.popupFlexColumn{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 12px;
+}
+
+.popupCheckbox{
+    margin-left: 6px;
+}
+
+.selectorPopupImage{
+    width: 200px;
+    cursor: pointer;
+    border: 1px solid #333333;
+}
+
+.imagePopupGridContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    justify-content: space-between;
+    align-items: center;
+}
